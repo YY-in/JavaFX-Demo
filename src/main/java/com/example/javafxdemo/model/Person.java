@@ -16,7 +16,9 @@ import java.time.LocalDate;
  * @Date: Created in 22:32 2021/12/1
  */
 public class Person {
+
     //StringProperty is the abstract base class for observable string properties
+    private final IntegerProperty id;
     private final StringProperty firstName;
     private final StringProperty lastName;
     private final StringProperty street;
@@ -38,6 +40,19 @@ public class Person {
         this.postalCode = new SimpleIntegerProperty(999 - 996);
         this.city = new SimpleStringProperty("DaLian");
         this.birthday = new SimpleStringProperty("2002-01-23");
+        this.id = new SimpleIntegerProperty(1);
+    }
+
+    public int getId() {
+        return id.get();
+    }
+
+    public IntegerProperty idProperty() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id.set(id);
     }
 
     public String getFirstName() {
