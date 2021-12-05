@@ -1,6 +1,9 @@
 package com.example.javafxdemo.model;
 
-import javafx.beans.property.*;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 import java.time.LocalDate;
 
@@ -19,14 +22,14 @@ public class Person {
     private final StringProperty street;
     private final IntegerProperty postalCode;
     private final StringProperty city;
-    private final ObjectProperty<LocalDate> birthday;
+    private final StringProperty birthday;
 
     public Person() {
         this(null, null);
     }
 
     public Person(String firstName, String lastName) {
-        //SimpleStringProperty is concrete in implementation
+
         this.firstName = new SimpleStringProperty(firstName);
         this.lastName = new SimpleStringProperty(lastName);
 
@@ -34,7 +37,7 @@ public class Person {
         this.street = new SimpleStringProperty("HaiXia Street");
         this.postalCode = new SimpleIntegerProperty(999 - 996);
         this.city = new SimpleStringProperty("DaLian");
-        this.birthday = new SimpleObjectProperty<LocalDate>(LocalDate.of(2002, 2, 21));
+        this.birthday = new SimpleStringProperty("2002-01-23");
     }
 
     public String getFirstName() {
@@ -97,15 +100,15 @@ public class Person {
         this.city.set(city);
     }
 
-    public LocalDate getBirthday() {
+    public String getBirthday() {
         return birthday.get();
     }
 
-    public ObjectProperty<LocalDate> birthdayProperty() {
+    public StringProperty birthdayProperty() {
         return birthday;
     }
 
     public void setBirthday(LocalDate birthday) {
-        this.birthday.set(birthday);
+        this.birthday.set(String.valueOf(birthday));
     }
 }
